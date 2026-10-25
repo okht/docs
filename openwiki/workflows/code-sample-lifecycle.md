@@ -24,18 +24,22 @@ sources:
     resource: repo://scripts/generate_code_snippet_mdx.py
   - id: openwiki-source-2b15ecffacad911ef9db112f
     resource: repo://scripts/test_code_samples.py
+  - id: openwiki-source-381b2039419503f4809ac2df
+    resource: repo://src/code-samples/deepagents/rag-deep.py
   - id: openwiki-source-2b3973f7b179794fb4534f89
     resource: repo://src/code-samples/go.mod
   - id: openwiki-source-2d6fb565fec243c560da8729
     resource: repo://src/code-samples/package-lock.json
   - id: openwiki-source-e0401fc6d5f2a13d30455bd9
     resource: repo://src/code-samples/package.json
+  - id: openwiki-source-3e7f005be053311cf7eb12f1
+    resource: repo://src/snippets/code-samples/rag-deep-index-py.mdx
   - id: openwiki-source-b68d7bad2afd9a38e8c331d5
     resource: repo://tests/unit_tests/test_generate_code_snippet_mdx.py
-generated: { by: "openwiki/0.4.3", at: "2026-10-22T08:20:38.024Z" }
+generated: { by: "openwiki/0.4.3", at: "2026-10-25T08:18:35.051Z" }
 verified:
   - by: openwiki/0.4.3
-    at: 2026-10-22T08:20:38.024Z
+    at: 2026-10-25T08:18:35.051Z
 ---
 
 ## Ownership and lifecycle
@@ -65,9 +69,40 @@ Extraction is deliberately line based, not a language parser. Indented markers a
 
 Prefer one source file for related snippets on a page, with shared helpers and test-only setup written once. TypeScript needs special care: the entire `.ts` file—including visible regions and remove blocks—executes as one module. Split independently runnable examples into files when duplicate imports or top-level bindings would collide. In every language, keep visible code on an executed path; a sample must not exit before it has exercised the imports, construction, or configuration it documents.
 
+## Re-verify the Deep Agents RAG sample
+
+`src/code-samples/deepagents/rag-deep.py` is one executable tutorial program whose eight marked regions supply the RAG page in stages: imports and the source-owned `DOC_PATHS` route list; document loading; a preview; splitting; vector-store indexing; the retrieval tool; agent construction; and invocation. The generated `src/snippets/code-samples/rag-deep-index-py.mdx` is specifically the extracted first region: it deliberately exposes the imports, `DOCS_BASE`, and curated paths, but not the credential guard or the rest of the executable program. Treat that MDX as output to review, not a place to change the route list.
+
+```mermaid
+flowchart TD
+  Routes["DOC_PATHS in rag-deep.py"] --> Fetch["Fetch each path as .md"]
+  Fetch -->|"request succeeds"| Documents["Document with source metadata"]
+  Fetch -->|"RequestException"| Continue["Skip failed path"]
+  Documents --> Split["Split and index chunks"]
+  Split --> Search["search_documentation tool"]
+  Search --> Files["Write retrieved chunks to StateBackend"]
+  Files --> Agent["Deep agent and chunk analyst"]
+```
+
+The RAG program keeps its documentation corpus in `DOC_PATHS`; the loader uses a caller-provided list when supplied, otherwise that list. It fetches `${DOCS_BASE}/${path}.md` with a 20-second timeout, retains the browser-facing `${DOCS_BASE}/${path}` as document metadata, and continues after an individual `requests.RequestException`. This makes transient or removed pages non-fatal when other routes load, but the later preview indexes `docs[0]`, so a run in which every fetch fails cannot proceed. The initial credential guard exits successfully when `OPENAI_API_KEY` is absent; with credentials, the complete program performs live fetching, embeddings, indexing, and an agent invocation rather than only parsing the displayed fragments.
+
+To check this changed source against its live dependencies, run the focused sample command. It validates the entire file, including code hidden by remove markers:
+
+```bash
+make test-code-samples FILES="src/code-samples/deepagents/rag-deep.py"
+```
+
+Then regenerate its intermediates and review the affected MDX output:
+
+```bash
+CODE_SNIPPET_SOURCES="src/code-samples/deepagents/rag-deep.py" make code-snippets
+```
+
+A partial extraction replaces only this source stem's intermediate files, but the renderer still scans every existing intermediate. Therefore this is appropriate for focused review of `rag-deep-*.mdx`; use a full `make code-snippets` before relying on a repository-wide generated-output refresh.
+
 ## Execute samples and manage dependencies
 
-For a focused live check, pass a space-separated explicit file list:
+For a focused live check of another sample, pass a space-separated explicit file list:
 
 ```bash
 make test-code-samples FILES="src/code-samples/deepagents/skills-tools-resolver.ts"

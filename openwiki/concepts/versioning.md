@@ -3,6 +3,9 @@ type: documentation route model
 title: Documentation Route and Language Versioning
 description: Explains how source ownership, conditional rendering, and link rewriting produce Python, JavaScript, and unversioned documentation routes. Covers navigation and redirects as separate compatibility contracts.
 tags: [documentation-pipeline, routes, language-versioning, redirects]
+verified:
+  - by: openwiki/0.4.3
+    at: 2026-10-25T08:18:35.051Z
 sources:
   - id: openwiki-source-d0cdf44431684bdedf34705a
     resource: repo://pipeline/core/builder.py
@@ -14,10 +17,7 @@ sources:
     resource: repo://src/language-toggle.js
   - id: openwiki-source-24e5f74f0f40e9bfd381871f
     resource: repo://tests/unit_tests/test_builder.py
-verified:
-  - by: openwiki/0.4.3
-    at: 2026-10-23T08:20:30.474Z
-generated: { by: "openwiki/0.4.3", at: "2026-10-23T08:20:30.474Z" }
+generated: { by: "openwiki/0.4.3", at: "2026-10-25T08:18:35.051Z" }
 ---
 
 # Documentation Route and Language Versioning
@@ -111,7 +111,9 @@ Ordinary LangSmith content emits once below `/langsmith/` using Python preproces
 
 The full Managed Deep Agents pass discovers only direct `managed-deep-agents*.mdx` files. A matching `.md` file can be built through the targeted path but is absent from `build_all()`. Use a direct `.mdx` source for a page intended for the published full build.
 
-`docs.json` projects Managed Deep Agents into corresponding Python and TypeScript tabs: Get started, Agent capabilities (including Channels), and Build and deploy. It redirects current unversioned and selected historical Managed Deep Agents URLs to Python routes. No unversioned Managed Deep Agents artifact exists; Python is the compatibility default, not a replacement for the JavaScript variant.
+`docs.json` projects the same Managed Deep Agents hierarchy into Python and TypeScript tabs. Each has **Get started**, **Agent capabilities**, and **Build and deploy** groups. Identity and the nested Channels group belong to Agent capabilities; local development, deploy, the MCP endpoint, custom frontend, Context Hub, and CLI belong to Build and deploy. This placement is deliberate navigation structure: for example, the custom-frontend source describes calling a deployment directly and choosing identity based on the caller environment, but its source location and its navigation group do not change the two generated route variants.
+
+The redirect set maps the current unversioned Managed Deep Agents overview and many formerly unversioned individual pages to the corresponding Python route, including custom frontend and identity. No unversioned Managed Deep Agents artifact exists; Python is the compatibility default, not a replacement for the JavaScript variant.
 
 ## Change and verify safely
 

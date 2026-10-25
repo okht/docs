@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:85654e81360bcd187448b98f5ca88d11136bbc805cf179f6bfd6b61463e2e799",
+  "pageVersion": "sha256:95aeaf86be2b22c1008950c8e0abb353fa8c4d774a12295ed5607e13428d9d69",
   "claims": [
     {
       "id": "claim_ce02287599534e61a2585157859a8d87",
@@ -415,10 +415,68 @@
           "version": "repo-lines-v1:sha256:55f4590057356bd6ee711718519574eec270246efc96c0ba089185140fc3f7f9:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJhM2I0NjlkOWUwOTc1NzIyNDY2NjczNGM5ZWY3YjI1NGQ4ODUzNGY1ZDViYjcwOTg5NjA4MDVjNTUzZGMzMDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljMTlhYjlmNzc2MTQwNmU5Mjc0NDNjMjNlZjkwNDQzZGM3MjY3NGFiM2VkMTA4Njc3OGFkMWYwNDIzMmIxNWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
         }
       ]
+    },
+    {
+      "id": "claim_58d0c33d0e634b30b30654ca24391539",
+      "statement": "`rag-deep.py` owns the curated `DOC_PATHS` corpus and its first `rag-deep-index-py` marker produces the generated index MDX, so route-list changes belong in the executable source rather than `rag-deep-index-py.mdx`.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/extract_code_snippets.py#L99-L121",
+          "version": "repo-lines-v1:sha256:5e943ee6f0dcafec143d754480e6a395ae81ac54e6d8fc44acde56931df53701:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1NDA4MzUzMTgxNjA1NjgwM2IxYzgyODczNDFjMzc3MzQ5ZDZmY2Y3ZjJkODQzMjU5NmQyNDhlZTgwYmEzOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwZTRmYjRkNDIzZWMzZTYwYTFkMDNkYjA4OGU1N2U4YjM1MjIxZDkxMzg0OTM2YTg4ZmQ5Mzg5NzllZDlkOTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdhN2UxMTFlZDc1NWZjOWM2ZjJlNzUwMzM3Y2Y3MTk4Mzc0NDRhYzNjYjcwNjdhNGI3OTdhZGUxMjhiYzNhZTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY0MzRmYjJkMTg1ZTMyYTZkN2YyNjk4YzI4ZTg4YmZiM2Q2ZDg0MWViNzk5ZGMwNzYxYjRlZjk0NzhmZTViYWUifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_code_snippet_mdx.py#L319-L337",
+          "version": "repo-lines-v1:sha256:b32791bf149a3aa1bbb35716bf512c14d138b5dd023ee013b19054bf8130c459:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5YzljYmM2NzhhM2E4NmE4NmY4NTE5Mjg0OWE3ZWRiMjg2NjdmZWU4MDAyZDRiOTM1NTY1NzRkNjhmNWRlNWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0MTQwNTc1Mjg3YjNkMGRlNjg5ZTM0NTQxYzk3MjczN2NlZTY0M2JlMzRmMjEzODcxNmFmNGIzZmNiNDZkMGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNlNTgxYzg2MmEyNzlkMGI5OWZjN2M5NzQ0ZTM4MDk1ZjIxZGUwMTQ5ODYyODQwYTQ2MTUyOGUxZjUyNDUwZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE4MDk5YTI3Njg4ZTI3MTZkYjFmYjJjMmE4NDk1NmQyMTBkN2FhMzRjNjEwNTFjNTEyMzJhYThmYmE2OTg1OWQifQ"
+        },
+        {
+          "resource": "repo://src/code-samples/deepagents/rag-deep.py#L12-L38",
+          "version": "repo-lines-v1:sha256:a5de189357d0bbd81bc128ea67a9227e933c25aa8c0722a2f8c8b8ccc527ef61:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJjYzBlYmM4ZThlNjY4N2U2OTBjMTI5ZjU5ZmRkNWM1MmZkZjliOTU5MzE5OThhZDllNjI4NmFkYTA5YTA4NjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyYWQ5OWJmNzE0ZWI4ZjY1ZGYzMjExNTNhYTM5M2M1MmQ2YjQ5NjNmMzRmMTJkYTI4ZjYzNGZkMTI0YmRhMDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVmYTNhY2Q1MmQ2NWI2NTgxNGM4ZGRiNTExZDBmYTE0ZWNlM2Y3ZjYzZmI5YTgwYmE5MzlmMTY4YTc2YmZhZjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE4ZTM3ZjdhODU3YTg4YjU5YTJkYTE0NDVjZjhlYmU1N2Y3NmIwNDIyYjY2NWMyYWQ5MDcyZGEyOGNhZWYyNTEifQ"
+        },
+        {
+          "resource": "repo://src/snippets/code-samples/rag-deep-index-py.mdx#L1-L27",
+          "version": "repo-lines-v1:sha256:8f2c7494ad80539f305e30ab24cb7f614d8af05c9ce4a4700c38afc8868fcea0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlM2I0ZDVhZjU0ZWUxZjA5ZWM5OWNhZTRmMzg5NWVhYjI4MTkwY2RjZTAxNzdlNTY1ZmEwNzU2NzhjNzA4ODciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3YzA2YzU2MWQ1YzMyNzM0MzY4NTI2OGE0NmIzMzkxZjM5OThlZWU4OTBkMmJlNTFmMGQyMWNjNGE1M2FlNmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_49038b9fb86d4a5983a8de9cd696289e",
+      "statement": "The Deep Agents RAG loader fetches each configured Markdown route with a 20-second timeout, assigns the browser-facing route as source metadata, and skips individual `requests.RequestException` failures; because the subsequent preview accesses `docs[0]`, a run with no successfully fetched documents cannot continue.",
+      "evidence": [
+        {
+          "resource": "repo://src/code-samples/deepagents/rag-deep.py#L40-L67",
+          "version": "repo-lines-v1:sha256:cfea3cb0ffb46821f87f9169c6f7315abd52f034588b21201bbc02cab5663c36:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM4YjE2NjVmMDY2YWJmMjgxMWFhMjYwMTU1NDRjMWRmMjU2ZjY2YmNmNDIzNGI4NmFjMDA5OTM1MzVmOTk1NjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyYWQ5OWJmNzE0ZWI4ZjY1ZGYzMjExNTNhYTM5M2M1MmQ2YjQ5NjNmMzRmMTJkYTI4ZjYzNGZkMTI0YmRhMDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0NDc4NmI4MGQ1OWYzYzY2Nzk2ZTg0MjM4NmVjM2Q1MDM5MGI1NzZmODFiZmVlM2IwNzlhMjhhODQyZDMzODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdkNzEyMGZlODRjNTZkYWFkODIyMTdkOTE4Y2M3ZmQwZTVjZmRmZjJmYWE0OGRjMWRiNTM0MDBhYjU1MmQxODEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_16f6132011b74b5487094d0c23b71fe2",
+      "statement": "The RAG sample hides its `OPENAI_API_KEY` guard and embedding setup with remove markers, but those regions remain part of focused runner execution; absent credentials cause a successful early skip, while credentialed execution performs the live document-to-agent workflow.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/extract_code_snippets.py#L53-L76",
+          "version": "repo-lines-v1:sha256:3a29275d11ec79e7b4314ff1c9b29994d1c76bd1be8f8c523c47822b47e7ad24:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhMWIyZjRkY2FjYTBmMGIwNzg2MDQxMTVjNzlmYWQ4OWExNzJlMjhhMDYwODUxNzgzNzBjOGY5OTRmM2VlMjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRlOGYyMDQyZGM2YzJmMmM2Yzc2NDhiZDQ0OWQ5NTRlM2ZiODA3N2FkMzVkZGE4MTJjNDQzOGJkOWNiNjYxMjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVkYjI1Y2NkM2U4M2IxZjljOWNjNThhYzdkM2FkZGIxMTJiZDk1NTM0NDY2MjkyZTQ0Y2Q0NDg2YjZkNTNkMmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNmNDlmY2JhOGM0ODM1OThjOWExNjQyNTNhNGIwZDk4MTJiOTUyZGM5YThlYjQ2YzE3ZjRmZDgwNGY3YTQ5YzkifQ"
+        },
+        {
+          "resource": "repo://scripts/test_code_samples.py#L256-L295",
+          "version": "repo-lines-v1:sha256:61294cdb973569c18d76182feb8fc0bf9bbbd1a90556899aeb88096b173a2005:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJkMzk3NGRkYWU4ZGUzYTI3MmFjMjBjZGY5M2NiY2M2NmY0ODAyYjQxOTcxMTRkZjIzNGYwMTczNjg2M2EzZDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkYTBkOWNkNGZiNGM5Mjc0OTgzNjg0ODZlMmY3YWY4YTMzYWNlMDgwNWIwZmY2MjQ5ZDI4YzdmNjQ1NGYzYTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRmYmQwMDkzMTRiYzI3MDg0MTY3MzRhMDJhZTVmZjM5YTFlNDhhMDUwYmU5MWY0M2IyZmFhOTIwMDJjNjJiZmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNlZDA1NDZmNTNlZjEyZGFiN2NmYjQ1NjRjYTZlYzZhNTU1YzYxNDQ2ZDFjYzEzMTFjY2ExNjM4ZTNhOWM3OGQifQ"
+        },
+        {
+          "resource": "repo://src/code-samples/deepagents/rag-deep.py#L206-L228",
+          "version": "repo-lines-v1:sha256:17d5c52c232d6040c0eddca5010ae9dc4d58018241b043f91aaf97f3e39a4ec1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3M2U2ODA0ZmRhZTg3ZTNjOGRmZjhlYzgyODM5OTUyMTQ2MDU0YTg4ZWZjOWUzNTZmMDM3NmY2ZDIzMzdlY2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2MjBhYTZjOGI5MmRmYTcxODEwNTRkN2ZlOTllYzA4OWFmMmExYjdkYmI5YmEzODViMWNkOGM0NzI4NWQ0ZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImExOTE5NjUxODU0ZTQzMjQ2ZjJiODdiZGFlZTY4ZTEzNjMyN2IzMjExOTljNDNiYTVlNDY4MGRhNTJiNjQwZGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/code-samples/deepagents/rag-deep.py#L3-L10",
+          "version": "repo-lines-v1:sha256:909a0bd4fabd557e24f6888ccd07f6cfd0b14d77a31b6afdb6df1a13b91f36d1:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjE4ZjlhNjExZTNhZGMzYmE4OGQwZDYyMmMxNjYzNWJiOTJiODVmNzJhYjY2YjYzNTY1MWMxODA0ZWZmMjU5OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTYyMGFhNmM4YjkyZGZhNzE4MTA1NGQ3ZmU5OWVjMDg5YWYyYTFiN2RiYjliYTM4NWIxY2Q4YzQ3Mjg1ZDRlYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTE4YzA3NmFlMzIxYTU1MTVmYzhlZjhmOTNkNzdhNzA1NjQ1NTZiOWI0YjI1MmU4NmNjY2MxZDY3MGY2NGIyYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmZlMmI1YzNhNzZiMmVjYmYzYjYwMmE5MDMyM2I3MmNkZGE4NmU2NzZkYzM2N2ZmNWI5MjZhYjg3OWVlMWRkOCJ9"
+        },
+        {
+          "resource": "repo://src/code-samples/deepagents/rag-deep.py#L75-L80",
+          "version": "repo-lines-v1:sha256:beec55514213c27f5c87bf88cefbcf42e0e0217e151d5f52448aa56ef2050ad3:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjE4ZjlhNjExZTNhZGMzYmE4OGQwZDYyMmMxNjYzNWJiOTJiODVmNzJhYjY2YjYzNTY1MWMxODA0ZWZmMjU5OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTYyMGFhNmM4YjkyZGZhNzE4MTA1NGQ3ZmU5OWVjMDg5YWYyYTFiN2RiYjliYTM4NWIxY2Q4YzQ3Mjg1ZDRlYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmU3MzAxOThkMzAzZjhkOTk5MzgwNmRlYzE3YWU0ZjljZmMyOTZmYjVjZjc4NGIyOWFmOTU0MWViOGI2YThlMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjg5ZDg1Y2QzY2M0M2IxMjZkMWRjNDQ4YTNmYzBkN2M0OWFlMTE0MzMwMGViNDVjNGRmYzExZDIyMzkyMDMwYyJ9"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.4.3",
-    "at": "2026-10-22T08:20:38.024Z"
+    "at": "2026-10-25T08:18:35.051Z"
   }
 }

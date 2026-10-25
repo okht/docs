@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:631854b335e4479f14c7f72a500888e2511ade4619df0dac92689112011d9a0e",
+  "pageVersion": "sha256:f94ec13cd9d1833e2a71a32b28e9f58c8ffb4cd3a4d032e511a5e502b19408eb",
   "claims": [
     {
       "id": "claim_57e84dc243ac4b33838208ada1e699a6",
@@ -94,11 +94,19 @@
     },
     {
       "id": "claim_cad86076aa404a469da4ec2d29211429",
-      "statement": "docs.json projects Managed Deep Agents into corresponding Python and TypeScript tabs with Get started, Agent capabilities including Channels, and Build and deploy groups, while unversioned current and selected historical Managed Deep Agents URLs redirect to Python routes.",
+      "statement": "docs.json projects the same Managed Deep Agents hierarchy into Python and TypeScript tabs with Get started, Agent capabilities, and Build and deploy groups; identity and Channels are capabilities, while custom frontend is in Build and deploy, and unversioned current and selected historical URLs redirect to Python routes.",
       "evidence": [
         {
-          "resource": "repo://src/docs.json",
-          "version": "repo-file-v1:sha256:44906fa58d7061c0879ba3f4592645289df1320c79a022777de4662a687607cb"
+          "resource": "repo://src/docs.json#L2820-L2981",
+          "version": "repo-lines-v1:sha256:ad938be411096e2f7f37a61b844e71fe0865ba3b5dc8bbee88389673546c282a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJlYjAxNTczYWQ3MGMxZGYxOWI5MWZkODZjYjcyMjUxNzZmYWUwNGVmYmJhMzYzZDY5OTgxMWMxNTNkYzFiOTQ5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI3YzcyNjdkMDY3M2UzOGM2MDBmMTRhMzc0Mzk2NzBlZjUzZDRmNjk0ZjliYzBhOGI5MDhmOTI3MjI3MjJiYWUyIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI4ZjIyMzYwOTE0MGViNTZiZDYzZTNiZjI4OTM0MTIyYjk0MjdjZjVkMTFkNDU3MmNkYzViNWU1YTI3OTY5NzlkIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI4Mzk0ZDE0MGRiMTNmMTlkYzgyOWEyNGQyZjdmMjIzN2VhOTExNGExMzg0MWUyMmI1MjFiZjE0NDgyYzVlY2I5In0"
+        },
+        {
+          "resource": "repo://src/docs.json#L292-L345",
+          "version": "repo-lines-v1:sha256:b23a1404322ba32d1739a2967a2a8d7f41ef1cd721fb1c27ab0b57de75310bd3:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzNjE2NzU0NTYzMDVjNmE2YjI0ZjZhNGE0ZGMwMWQ4MDNjODI5MDZjZTRhOWU0NGYyMTYyYTI2NDgzZmI5NTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkMTVmM2UwNTkwNDk1NGVmNjNjZTQ3NDQwNWFlN2U1ZmU0MWJhZjM1MmVlMzYxYjg4MmI4YThjNzgxMTE0MDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ2ZmJmYjdmOGM2MWE0ZGM0NGVmYjkzOThlZjM5Nzg2MzY0YWQ4MDNhZjA0MmY2NGJiOTdmZDY5ZGQ5YjlhNjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZmJmYjdmOGM2MWE0ZGM0NGVmYjkzOThlZjM5Nzg2MzY0YWQ4MDNhZjA0MmY2NGJiOTdmZDY5ZGQ5YjlhNjQifQ"
+        },
+        {
+          "resource": "repo://src/docs.json#L881-L934",
+          "version": "repo-lines-v1:sha256:1e0c020c4bd2a5c27d86032251829af09c66870d39beeb142950636faebf7df4:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzNjE2NzU0NTYzMDVjNmE2YjI0ZjZhNGE0ZGMwMWQ4MDNjODI5MDZjZTRhOWU0NGYyMTYyYTI2NDgzZmI5NTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkMTVmM2UwNTkwNDk1NGVmNjNjZTQ3NDQwNWFlN2U1ZmU0MWJhZjM1MmVlMzYxYjg4MmI4YThjNzgxMTE0MDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ2ZmJmYjdmOGM2MWE0ZGM0NGVmYjkzOThlZjM5Nzg2MzY0YWQ4MDNhZjA0MmY2NGJiOTdmZDY5ZGQ5YjlhNjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZmJmYjdmOGM2MWE0ZGM0NGVmYjkzOThlZjM5Nzg2MzY0YWQ4MDNhZjA0MmY2NGJiOTdmZDY5ZGQ5YjlhNjQifQ"
         }
       ]
     },
@@ -108,7 +116,7 @@
       "evidence": [
         {
           "resource": "repo://src/docs.json",
-          "version": "repo-file-v1:sha256:44906fa58d7061c0879ba3f4592645289df1320c79a022777de4662a687607cb"
+          "version": "repo-file-v1:sha256:7c5eab5793a3aefd5902dcb125ca1874fc1b438d0d2e6cabf74a447362f6e19b"
         },
         {
           "resource": "repo://src/language-toggle.js#L25-L60",
@@ -183,6 +191,6 @@
   ],
   "verification": {
     "by": "openwiki/0.4.3",
-    "at": "2026-10-23T08:20:30.474Z"
+    "at": "2026-10-25T08:18:35.051Z"
   }
 }

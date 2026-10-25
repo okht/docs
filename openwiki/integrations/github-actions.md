@@ -1,11 +1,11 @@
 ---
 type: CI automation guide
 title: GitHub Actions and CI Automation
-description: Explains CI validation, event trust boundaries, and review-oriented GitHub Actions automation. Covers maintainer-gated agent work, GitHub App credentials, previews, external-contribution labels, and OpenWiki updates.
+description: Explains CI validation, event trust boundaries, and review-oriented GitHub Actions automation. Covers maintainer-gated agent work, GitHub App credentials, Mintlify previews, contributor handling, and OpenWiki updates.
 tags: [github-actions, ci, automation, security, testing]
 verified:
   - by: openwiki/0.4.3
-    at: 2026-10-23T08:20:30.474Z
+    at: 2026-10-25T08:18:35.051Z
 sources:
   - id: openwiki-source-5c124605ed6e394bffee862c
     resource: repo://.github/workflows/_check-links.yml
@@ -33,7 +33,7 @@ sources:
     resource: repo://scripts/check_integration_repos.py
   - id: openwiki-source-ac5a96b2eaef63c5d8d74d9a
     resource: repo://scripts/check-legacy-doc-links.sh
-generated: { by: "openwiki/0.4.3", at: "2026-10-23T08:20:30.474Z" }
+generated: { by: "openwiki/0.4.3", at: "2026-10-25T08:18:35.051Z" }
 ---
 
 ## Trust and permission model
@@ -59,11 +59,11 @@ flowchart TD
   Changed -->|"no"| Noop["Successful no-op"]
 ```
 
-This separates contributed code execution, metadata mutation, and repository-writing authority.
+*The workflow model separates untrusted revision execution, trusted metadata mutation, and repository-writing authority.*
 
 The integration-submission workflow demonstrates the strongest boundary. Opening an issue does not start the agent: a maintainer must apply `integration-run` or manually dispatch the workflow, and the workflow verifies that the triggering actor has `admin`, `maintain`, or `write` permission. It parses the issue form before the agent runs and presents values as untrusted listing metadata. The agent is required to leave local changes uncommitted and cannot push, create a PR, or comment. Failures, blockers, invalid forms, and no-diff outcomes are reported without a PR.
 
-Crucially, the GitHub App token is minted **after** the agent has produced a real diff. That token, rather than the agent, is used by `create-pull-request` to create `integration/issue-<number>` and the review PR. This both limits agent access to GitHub mutation and avoids a `GITHUB_TOKEN`-created PR waiting for manual approval before its pull-request workflows run. The persistent `integration-automation` label and per-issue non-cancelling concurrency prevent duplicate processing. See [Integration Listing Automation](/openwiki/workflows/integration-listing-automation.md) and [Agent Skills](/openwiki/operations/agent-skills.md) for the intake contract and skill boundary.
+Crucially, the GitHub App token is minted **after** the agent has produced a real diff. That token, rather than the agent, is used by `create-pull-request` to create `integration/issue-<number>` and the review PR. This both limits agent access to GitHub mutation and avoids a `GITHUB_TOKEN`-created PR waiting for manual approval before its pull-request workflows run. The persistent `integration-automation` label and per-issue non-cancelling concurrency prevent duplicate processing. See [Integration Listing Automation](/openwiki/workflows/integration-listing-automation.md) for the intake contract and agent boundary.
 
 ## Core CI and reusable checks
 
@@ -87,15 +87,42 @@ uv run python scripts/refresh_integration_downloads.py --check-docs-urls
 uv run python pipeline/tools/partner_pkg_table.py
 ```
 
-See [Testing and Validation Overview](/openwiki/testing/test-overview.md) for what each check does and does not establish.
+See [Testing and Validation Overview](/openwiki/testing/test-overview.md) for the check boundaries and focused test selection.
 
-## PR metadata, contributors, and previews
+## Preview deployment lifecycle
+
+`create-preview-branch.yml` is a generated-artifact handoff, not a deployment path for an arbitrary PR head. It listens for PR open, synchronize, reopen, and close events, plus manual dispatch. The creation job runs only for a same-repository PR or dispatch, and never for a closed PR. Fork PRs therefore receive neither a repository write-capable build job nor a Mintlify preview. The workflow has read-only defaults; only the artifact creator gets `contents: write`, and only the feedback job gets `pull-requests: write`.
+
+```mermaid
+flowchart TD
+  Event["Same-repository PR or manual dispatch"] --> Gate{"Open event and allowed source"}
+  Gate -->|"no fork or closed PR"| Skip["Skip creation"]
+  Gate -->|"allowed"| Validate["Validate source branch"]
+  Validate --> Build["make install then make build"]
+  Build --> Name["Create unique preview branch name"]
+  Name --> Artifact["Force-add build and push preview branch"]
+  Artifact --> Dispatch{"PR event"}
+  Dispatch -->|"yes"| Mintlify["Request Mintlify branch preview"]
+  Mintlify --> Feedback["Create or update one PR comment"]
+  Dispatch -->|"manual"| Ready["Branch ready for deployment"]
+  Closed["Closed PR"] --> Cleanup["Delete matching preview branches"]
+```
+
+*The preview lifecycle builds a disposable branch artifact, requests a hosted preview for a PR, and cleans matching artifacts after closure.*
+
+Before checkout, the creator validates `SOURCE_BRANCH`: it must use only `.`, letters, digits, `/`, `_`, and `-`, and be at most 100 characters. It checks out the source branch at full depth, uses Python 3.13 and `make install`, then runs `make build`. The preview name is `preview-<prefix>-<timestamp>-<short-sha>`, where the prefix is the first six alphanumeric source-branch characters; a remote existence check rejects the extremely unlikely collision. The job creates the branch from the checked-out source, force-adds `build/`, commits it only when artifacts changed, and pushes the branch. The resulting branch is a temporary deployment artifact: do not merge or author changes on it. See [Mintlify Integration](/openwiki/integrations/mintlify.md) and [Repository Source Map](/openwiki/architecture/source-map.md) for the generated-output boundary.
+
+For PR runs, the dependent feedback job first requires `MINTLIFY_API_KEY`, `MINTLIFY_PROJECT_ID`, and the creation-job output branch name. It POSTs that branch to `https://api.mintlify.com/v1/project/preview/${MINTLIFY_PROJECT_ID}` with the Mintlify bearer token. An unparsable response, absent inputs, or an API error that supplies neither `statusId` nor `previewUrl` fails the job. A response may provide a status ID without a preview URL; the PR comment then still records the generated branch, but cannot provide site or deep links.
+
+The feedback job skips Dependabot-authored PRs. Otherwise it lists the PR files through the GitHub API, retains routable `src/` Markdown or MDX files other than `code-samples` and `snippets`, ranks them by diff size, and links at most five pages below the Mintlify preview URL. It maps `index` pages to their directory route and adds the Python segment for unqualified `src/oss/` paths. The comment carries a stable marker; the workflow updates one existing bot comment, removes older duplicates, and creates one only when none exists. Updating instead of repeatedly posting avoids subscriber notifications on each push.
+
+On PR closure, cleanup derives the same sanitized six-character prefix from the PR head branch, finds `preview-<prefix>-*` remote branches, and deletes each one. It refuses to delete a match that does not start with `preview-`; an already-missing branch is a warning rather than a failed cleanup. The matching prefix is a safety and lifecycle convention, not a unique PR identifier, so do not use preview branches as durable artifacts.
+
+## PR metadata and contributor automation
 
 Two `pull_request_target` workflows intentionally operate without checking out a contributor branch. `tag-external-contributions.yml` mints an organization-membership App token to distinguish active `langchain-ai` members from external authors, labels new issues and PRs as `internal` or `external`, and treats membership lookup errors as external. The App token is necessary because private organization membership requires organization read access; configured internal bots are explicitly treated as internal.
 
 `external-integration-pr-comment.yml` similarly reads changed-file metadata and, only when needed, the head MDX content through the GitHub API. For a non-draft external PR adding integration documentation or changing the external-listing YAML, it adds the `integration` label. A new hosted page avoids closure only when its frontmatter is `featured: true` or its declared package has at least 50,000 monthly downloads. Otherwise the workflow posts one marker-based redirect to the integration-listing issue form and closes the open PR. API-fetched content remains data, not executable source.
-
-`create-preview-branch.yml` uses the ordinary `pull_request` event and gives write permissions only to the relevant jobs. It does not create a preview for a fork PR; a same-repository PR or manual run validates the branch name, builds the docs, writes build artifacts to a collision-resistant `preview-<prefix>-<timestamp>-<sha>` branch, and asks the Mintlify API to deploy it. The comment job updates one marker-based PR comment rather than notifying subscribers on every push, and lists up to five changed routable Markdown pages. On closure, the cleanup job deletes only branches matching the sanitized source prefix and refuses to delete a branch outside the `preview-` namespace.
 
 ## Scheduled review writers
 
@@ -116,7 +143,7 @@ flowchart TD
   Standing --> Draft["Create or update draft review PR"]
 ```
 
-This flow preserves remote evidence while keeping all catalogue changes reviewable.
+*The weekly scan records evidence in all cases but opens or updates a draft PR only for an actual change.*
 
 ## OpenWiki update behavior
 
@@ -129,15 +156,18 @@ After generation, the workflow mints a GitHub App token and creates or updates t
 1. Keep `pull_request` validation, `pull_request_target` metadata actions, and trusted writers separate.
 2. Never check out or execute fork-head code from a `pull_request_target` workflow.
 3. Preserve maintainer authorization, untrusted-form handling, local-edit-only agent behavior, and post-agent App-token minting in integration submission.
-4. Preserve no-op exits, narrow path staging, evidence reports, and human review for scheduled writers.
-5. Keep membership and external-integration classification fail-safe: an uncertain membership is external, and fetched PR content is data only.
-6. Do not expose provider or write credentials to a workflow merely to make fork validation convenient.
-7. Keep the OpenWiki writer's full-history checkout and three-path PR allowlist.
+4. Keep preview creation limited to same-repository PRs or explicit dispatch; validate source-branch input before it reaches checkout, Git commands, or an API request.
+5. Preserve the preview branch namespace, collision check, narrow job permissions, and cleanup guard. Treat a preview branch as disposable build output.
+6. Preserve the Mintlify input checks and stable comment marker; update the existing preview comment rather than posting a new notification on every push.
+7. Preserve no-op exits, narrow path staging, evidence reports, and human review for scheduled writers.
+8. Keep membership and external-integration classification fail-safe: an uncertain membership is external, and fetched PR content is data only.
+9. Do not expose provider or write credentials to a workflow merely to make fork validation convenient.
+10. Keep the OpenWiki writer's full-history checkout and three-path PR allowlist.
 
 ## Related pages
 
-- [Source Map](/openwiki/architecture/source-map.md)
-- [Agent Skills](/openwiki/operations/agent-skills.md)
+- [Repository Source Map](/openwiki/architecture/source-map.md)
+- [Mintlify Integration](/openwiki/integrations/mintlify.md)
 - [Testing and Validation Overview](/openwiki/testing/test-overview.md)
 - [Integration Listing Automation](/openwiki/workflows/integration-listing-automation.md)
-- [LangSmith OpenAPI Refresh](/openwiki/workflows/langsmith-openapi-refresh.md)
+- [Local Development](/openwiki/workflows/local-development.md)

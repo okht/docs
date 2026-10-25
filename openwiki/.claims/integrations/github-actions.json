@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:0a8157b99d09591533a933c99cd942b3f40fd075e327049e725b8d2e22a2c7fd",
+  "pageVersion": "sha256:bb30225b899600fda78b9a024c1298a5d0caaf4fef2eb3bb60c72c9157e505ed",
   "claims": [
     {
       "id": "claim_99053526ff9747f0ad0e4b02995da8c7",
@@ -197,10 +197,40 @@
           "version": "repo-lines-v1:sha256:4456280bead3538aa2c4f326ef684413738b9765e31a81a092c38a4b028725a9:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwZThmOWZhNDBlN2JkMDQ5OWQxYzBkODNmZDc1OGFhODViMzA4NDJkYmQ2MWYwZWE2YjdhZTEwZWZlYzc2ZDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0Nzc5NmQzMTczMmZiY2U4OTk4YTJmN2U3YjFiYjk3NTVjMjNlNTg1MDMyMGI5MDkzN2Q4MmMzZmQwZTYyYTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFhMmQ5NWViODViNjA0YjdiZmIxNzRiMzdlNThkYzg1ODVlZjcyNjUzNTAzMGExZTE4YTZkZDUwNTQ1OGM5YjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
+    },
+    {
+      "id": "claim_8f09d588992e4f89bea279e495326688",
+      "statement": "The preview workflow constructs its deployment artifact from the checked-out source by force-adding build/ to a timestamp- and short-SHA-qualified preview branch, committing only when build artifacts differ, and pushing that branch to origin.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/create-preview-branch.yml#L140-L205",
+          "version": "repo-lines-v1:sha256:ff9adf6dab97e46139b65b400e93cca80ff4bf3cc737c90e5a71d9617328b9c0:eyJzZWxlY3RlZExpbmVDb3VudCI6NjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxNTI5NjgyZGEyNTVmYzY4NjBmY2RhOGRiMjA3OGE5YWRhMTUwZWUxODZjMTIxYWFjZmMwYTU5NzNmMjNmOWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUxMmMzMDFlMjhhNmE1NGI2MDFkNmJkYWQxZmUwYTEyZmNjZGNkOTJmMTUzMDg2NGYwYmI4ZDBiMDFmNmFmZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMzN2U2M2RlMjgzMDM1OWY4ZmU4MmU0OTM1MmZiZDhiZTA3NThmZmY2ZGY3MTc3ZTRhMTFmNmI2ZjJlYmViNzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdlZjAyYTcxMzM0NGIzZjYyYjJmNmY3ZTJlMjUzYzcyMjIxNDM3NTAyZTFhYzkyNGNiNzcwMGIxZTU0OTRjY2YifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ed9caab02a31405d939035c544cb3b0b",
+      "statement": "For a successful non-Dependabot pull-request preview, the feedback job validates Mintlify credentials and the generated branch, POSTs it to Mintlify's project-preview API, and fails when the response is not JSON or reports an error without a status ID or preview URL.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/create-preview-branch.yml#L239-L283",
+          "version": "repo-lines-v1:sha256:48f0bfc7921b132c3c4baff1678a254af9f09a7e643f620c29361e52ddb34357:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllNzNmM2E0NTAyNmFjOWRkMzM1ODNmNTFmMTIzODliMmEzMzVjZjUyM2RmYjdiOGJjNzYxOGEzOGM2MWQxMDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwYmRmOGMxYWEwMTk0YzM3NGYzODZiNWRlYmRjNjBkZTcyMmI4ZGIwNjIxOTZmYzEwNTEwMDUwN2ZkMjVhMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNiOTdjZGI5YzI3MmE3OTZlMmE5MmI0ZmVjM2JlNjc2MTQ4NjllY2JkNWI3OGEyNGNlZjRiYmQ3MGI5YzQzZWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImExNDliNjFhZGY5ODY3ZTQzMTUzNDVjZDYzOTkwMTk0NTRmNWFhZTgxODI5NWI3Yzc2Zjc1N2Q4NDQwMWNjMTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fb3d2d8f41844a13b02a9791804fb8b4",
+      "statement": "The preview feedback job maps and ranks changed routable documentation files, includes at most five preview deep links, and maintains one marker-tagged bot comment by updating an existing comment and deleting duplicates instead of repeatedly notifying the pull request.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/create-preview-branch.yml#L285-L432",
+          "version": "repo-lines-v1:sha256:521194b648a7c6dcccbc10a8213a8e24d16fc35beecb8ce1044922660b7899d0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQ4LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI1NzZkMjViNGZkNzU0NGQ1NjRmZWM4NzhiMDU1NDE3MGU2Y2IzYTQyNWZmMzVjMmU3MDRlMWJjZWY5NWU5ZDlkIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NTIyYzQyY2QxOWM2ZDAzZDgwOGM0NTI3MjA1NTI4MjViN2VhMWM1YjQ5MWIyMTg1MTFjYWM3NDE1Y2Y5ZDliIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI5MTlmNjg5NzYxOWFhYWFjODEzMmUwMzU5NjA2MTRkMWM3NGJhZDA1YmM5YjJiNjM5ZDgxZjNlZTIzZDJiMTZhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.4.3",
-    "at": "2026-10-23T08:20:30.474Z"
+    "at": "2026-10-25T08:18:35.051Z"
   }
 }

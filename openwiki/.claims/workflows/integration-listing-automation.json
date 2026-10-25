@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:d721bc3b8160d63ef912fd055e8d290a44f4462c5c85e7b292945572c4911140",
+  "pageVersion": "sha256:a1cc10880916adef001bb93ad28c169b1dcbb52a1dbeb6ab10cc7fb2a9e772e1",
   "claims": [
     {
       "id": "claim_932f3ab25fad4bad942b43f94721d102",
@@ -57,20 +57,6 @@
       ]
     },
     {
-      "id": "claim_81ac580b778e4521be40f520b7e12f3b",
-      "statement": "The workflow reports blocker-file, failed-agent, and no-change outcomes on the issue instead of opening a PR; for real edits it creates an `integration/issue-<number>` PR with a review checklist, then links and mentions the PR on the source issue.",
-      "evidence": [
-        {
-          "resource": "repo://.github/workflows/integration-submission.yml#L224-L280",
-          "version": "repo-lines-v1:sha256:86997cbb3944e951f0e2dd0bda66b5ef83ec74330651f433e1be4996e902c73a:eyJzZWxlY3RlZExpbmVDb3VudCI6NTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhOWExN2I5ZmFkNjMzNTU1MTUxZWJiN2JjM2QwZGU5YjQwMmFmNzA5NDVkZGE3MmI4YjZlMTJjMWYwYTk5MDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwZTc2ZWNkMDJhYjFiODJlYmY2NDg3NGUyNDM5OGNlMTdhZmI2ZTZkMjI4NmNiNTY2ZjIxNmMxNjU0MGJlYWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM1OTZkMzU5YzI5ZWQ3MmE4MDhiYTYwZGZiMTYyM2E2NGM0M2M2NGEyNjA2NGNmMDI2MzZjYmZhY2UzZTNjMmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmZWU0M2JlMTdlOGZkMDBkM2JlMGViOTIwYWRiNmE3NzA1MDkzNTk2YjA4YjdmNDM1YWI0NGFmOTk5ZWY2ZDkifQ"
-        },
-        {
-          "resource": "repo://.github/workflows/integration-submission.yml#L282-L340",
-          "version": "repo-lines-v1:sha256:d3435d7467c4129cecbb6e0c755b39fb6cbdf945a3ce8a2b1a163525b892276c:eyJzZWxlY3RlZExpbmVDb3VudCI6NzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE4NWVkNzNjNzZiMzM3MjI4MjAxYmM1ZWU3NDJhMGQxMTYwOGZjMzljZmQ1NmFkZDQ1ZTg3NzhhMDgyYzczOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQwODFhMTEwNDg0ZDdjNmFmMTY3YTU2M2RiYmI2YTcyNTJmYjA0MzEwNjU4NTk4YjIyOGVhZjZlMWU1NTdkY2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk1ZmJmZGEwNmVkZTA2M2UxNWNhMmJkMmY3N2VhMDNiMWE0YWY2YWI3MmU0NDBmOTNiZWExODE4OTU4ZTA1ODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
-        }
-      ]
-    },
-    {
       "id": "claim_b5b1efe32726442cb19f502c3447a997",
       "statement": "The weekly refresh job flags external integrations at the 50,000-download threshold, creating deduplicated Linear issues only when both Linear credentials are configured and otherwise performing a dry run.",
       "evidence": [
@@ -117,130 +103,82 @@
       ]
     },
     {
-      "id": "claim_99c8efe88c924f64b8153375991da60e",
-      "statement": "`integration-submission.yml` serializes attempts in a non-cancelling per-issue concurrency group; label-triggered executions proceed only for an `integration-run` event started by an actor with write-level repository permission, manual dispatch is permission-checked too, and `integration-automation` prevents reprocessing a marked issue.",
+      "id": "claim_fa6ea8de664540ad895b1b7278f97dc7",
+      "statement": "The integration-download generator recursively scans supported component MDX files while excluding indexes, templates, and example data; it sorts collected hosted and external rows by available downloads descending and name, writes all-row tables for nonempty components, and writes featured tables for chat or components with featured rows.",
       "evidence": [
         {
-          "resource": "repo://.github/workflows/integration-submission.yml#L13-L101",
-          "version": "repo-lines-v1:sha256:0483de37cd76e04c4995895dc497cd615b7444a07cefd6d898bf163a4ddce3e0:eyJzZWxlY3RlZExpbmVDb3VudCI6ODksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5NmRjNDgxNDlmNWE4M2QxZWQ2ZGJiMzliYmM3ZTJiOTAyYWEzZDM0ZDZiZDVhZTRiMjkxYjY4ZGYwY2E3OWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU0Mzk5NDc4OWM4MWE2ZGFlY2IyMWQzOWU2NGZmYTliODA2ZjczYWFiNjQzMTQ4MGFmZmY4MzE3MTExNTA5ZTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk0YTBhODZhOWZiMzNjMzk1N2E2YWFlNzlkNGFlMTAwZWZlNmY2MTQzZDY3MjdiMWJhMmFkNjBhM2EzZDU5YzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNjYzc2MTAyMGNmYWRiODZjOTQxOTI5YmUxZGMzZTEwMGNhMWRkYjU5NTJmMmMyMWFmMTYxNDY3YTg2OTdkZmYifQ"
+          "resource": "repo://scripts/refresh_integration_downloads.py#L321-L335",
+          "version": "repo-lines-v1:sha256:5cbc9e4c87c214da2a64d4c6028e03bbfa866c90ed818e219b0c5189507dca2b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhYTE1NGEwYmNiMTc2MjdjMWE0ZjA1NmQxODQxMTIyNjQyNTUyZjM1N2ZhZDZlOTQ5YzI0NTRlNGNlZjliOWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2NGY4MTBjNjRlOTAyMjk4NTljMzNkMGRkYWVlOWQ1NTg2NzEyZDliZDVmZGRkM2E4N2YyMmVjNWI0YzVjOTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3MDE0OWUwNjlhZDY3ZWNjZjQ3MzY0NmZmMWM3NTAwNTBkMzI5ZDExMDAxOGRjNTc2Njg3OGVhZmExZDYwN2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI5ZWE2NTQ5YzVlNDc1NTgxODZmZDk0NWM5NTE4ZWVhOWIwZDNkMTFhNzU4YTY4ZjY4YWYxMWUwYmViMjJhYmMifQ"
+        },
+        {
+          "resource": "repo://scripts/refresh_integration_downloads.py#L554-L594",
+          "version": "repo-lines-v1:sha256:3cc6541450b14e3a621e94070fe9e14f1a998cace86b9e31531ca96cb8cf9b51:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFmMzFkZWM1NDUyZWNiYjA0MWUwYTljNzViZWRjNzBiYmJmYTAxMDFjMTBmNmJiY2VkNmUxNmEzZWNiYzdiMDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIyN2UyMjdhMjg2NTIyOTU0Mjk1MDFkNmEwMDhiNDAxYTM1NjUyZDRjMzFjNmRkYWFmOTk1N2M3ZGUwMzU1ZGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI0YjJhNDRhNjYyOTk5MTY3NDYxNjZhMjY5OTA1OTJmZGZmYmY3YTNhMzAxMzQ0ZDYxNDkyMjBlMzc4YzBkMTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQwZDZhN2I2NGY3Mjg5MzE2MDQwZGY1NzQ0NDViMWFmMmI1NjE4ODEyOWVlNDBiYzAzMTdkYWNiMTE0OTgwNDYifQ"
+        },
+        {
+          "resource": "repo://scripts/refresh_integration_downloads.py#L817-L844",
+          "version": "repo-lines-v1:sha256:8279e884aa09d211a5528766add40f276f6557c442aab35d0987fa0ab3a78966:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiZDJiZGUyOGE2ZTVlYThjNGVlYmFhODg3YTZiNjZmOWU2MGJhODRkNWU3NGFlMGU1NjIyMmU0ZTc5NGY4ZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ0YjFkNjQ2MjVjMDNmMGUxZTIxNDNjNDEzOWM5NzhkMjM4MThmMWIwNTYyMzg1M2YwY2VhMDM0M2QwNWIxYzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjYzg4Zjc0YzAxMjRlNDU0OWM4YjczYTc2MGQ4YWMxZjFiMDE3MzRiZDBlMTlkYjVkNzhmZmJmNjg5MjZhYzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI4ZDVlOGQ4NTEzMmUwOWFjNzVjN2IzNjIwM2VmMTQ4MDhlMzk3MDQ3NmNiZDNjMmQ2ZDBkMzRkNWM0M2VjODIifQ"
         }
       ]
     },
     {
-      "id": "claim_93330e80a57649b98055cb34ed7da33b",
-      "statement": "The maintainer-triggered submission workflow gives the agent parsed issue fields as untrusted metadata and requires it to leave edits uncommitted without pushing, creating a PR, or commenting; parse errors are reported on the issue.",
+      "id": "claim_98fee2406c6848b985b792ea4b2f18b9",
+      "statement": "Download lookup retries registry HTTP 429 responses up to six times with exponential backoff and caches a registry/package result within a run; other lookup failures leave that row unavailable instead of aborting table collection.",
       "evidence": [
         {
-          "resource": "repo://.agents/skills/submit-integration/SKILL.md#L84-L89",
-          "version": "repo-lines-v1:sha256:dc9a31e9ba93eb0494c968e123fac4353c02132926938dfb50d14a758314c317:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI1MWRlMzBiODU4ZGYyNzMyNmRjNmI5YThiNWQ2MjRjNmRjNTg2MWY0Nzc0NmQ4Yzk3MjRlNjJjZjY3MzRmZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzU0MjNiYjkzYjA0NDg3MGQ4ZTE4Mjk4ODZhZDM0MmY5NDUwMzE3ZWI3MDQwMDUwZmNiMDllZTY0ZWQ4ODZiMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmE0OGNhOGViODdlMTM2NDM1ZDBmNjVjNmQ3YzljMmM3ZTU1YjI5MTA3YTM0MDhjYjU5ZDE0ZTMxODI1ZDAyNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTc3ZmQxM2M0YTY2ZGFkYmI1Mzg1OTUxOTM2Njc3MWYyNWI4NDQzNjViZWNjN2E2NTQ0Yzg5MzkwZDhhMThhYiJ9"
+          "resource": "repo://scripts/refresh_integration_downloads.py#L267-L312",
+          "version": "repo-lines-v1:sha256:704e1292da4d640665d743176551f3529023c8d92b50a459d53d405e2eaae2a9:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwNGY3YzM2YjQ3YWI5NzI0ZmNhMWY1OTU5Mjk2ZjVmMDg4Njg5ZGUwM2E0ZWZiZDQzNmEzNDcyM2M3OWNmMGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4MTlkOTAyZDdkNjYxNjAwMWRiM2RjNzNiNTJmNDgwOTUzZDcxNTkxYTEzZTkwNjUwOTlmNzA0NzY0M2YzMzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc4NjgwNDIyZWUzMjUwMzBhNzRkNzllNmJlMWZmMmY0YjBiOTYzMDlkOTJiMzUyZDQ1YzE2OTY4MjljZjE3NjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViNGUyMDNhOWI4ODkwMmVkODE0ZjEzY2YwNTVkYjI0NmUzYmRkZTc3OTNmYjA5ZTkyMGFmYWU3MTNlNGM5NDkifQ"
         },
         {
-          "resource": "repo://.github/workflows/integration-submission.yml#L115-L155",
-          "version": "repo-lines-v1:sha256:49d33835403b1a2896a0287a36433b6d9b51c269da2da9ee44b77426347918e2:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ3YTBhMjZjZmU0NTBkMjczNTEwZmI1MDk4ZWRmZDZlMjU2YTBkMDMxNzg3MDlkMmY3NzM5YTY4ZDJlYTA4NDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU0Mzk5NDc4OWM4MWE2ZGFlY2IyMWQzOWU2NGZmYTliODA2ZjczYWFiNjQzMTQ4MGFmZmY4MzE3MTExNTA5ZTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMxZGM5YTgwYWU0MmRkZDZlZGY5NDE0OGI0MmQ0MmI2NzczZGYyZjVkNTQwNDY1NDZjMWU5NTFiZTdkMjgxMTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUyMmY4MmM1ZmNhMTFjNjhjOTVlYmI5MWVhZjNhMWFhMjYxODM1MjkzNGU0MjliNzg5YzRjNTAxMTQxZGEwOGEifQ"
-        },
-        {
-          "resource": "repo://.github/workflows/integration-submission.yml#L177-L222",
-          "version": "repo-lines-v1:sha256:c94498d47c53b25f04568e8bd1ab1e8e0524632336d310735444c17c34eec9a1:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFhNDA1MmM0OWQ3MTk2ZjlhYWZiNGNiODMzZmIzNmFmNTE1YzlmYzBkZTVjNjIyN2EyZDZkN2ZmNzQ3YjZjMzYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2ZjllMWE5ODc3NDk3ODIzZWQxNDJiNTI2NDM1MzY3MDAxZjcxMTc3ZGU1MjhhZGUzNzMyZGFjYzk3YTBmYTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU5YzJkNTg0MTA4YzdlNzFkYTRiNGE3MDFiNTBmYTNhZDY1N2E5ZGQ0ZWYwMGY5MjEzZjMyZWZlMzY2MjI2YmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYzNDdmNTg5YWI5YmRjMDJjZjQ1ODNiNTA0ZDlhMmUyMWI1NGRkYzQ4YWNmMjM2ZTFkMmI0YWI2ZGRlNDQ5ZGUifQ"
+          "resource": "repo://scripts/refresh_integration_downloads.py#L338-L377",
+          "version": "repo-lines-v1:sha256:e3feb1208dfa290d4543f0f2393fdea00d1f47392a371e6d58e5e219ecca07ed:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE3ZjU3Y2UyNThmMjk1NGY0YzVlOTFjMjE4ZjhjZGMwZTAzYWU3MTkyZDRmYWFkZDRhMjBhZjdhNDBjMDUxY2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzYmY4OTM5YTc0YzBlZmMxNWZhMjgyYzU4ODZhOTBmZTkzM2M5YjEwMjIwZTJmNjlhNTI1ZGYxMzE2ZTg2ODYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIwZDkyYWZmYTJlOWFlMjgzMjg4MzBkYjZkZjFkMDRlNWNmYjY1NmIzYjEzNDEwMDIzN2YyYzdkZTIwNGVhOGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmN2YxYWNjY2U3MzU3NGE4Mzg2NWJlMGQ1OGRkYmIwNWQ5ZWRjY2NmZmQ4MGU1ZDRlZTRjYzVhMTMxYjczOGEifQ"
         }
       ]
     },
     {
-      "id": "claim_c55e4019cc0c4d29ac2e070db5ba70bd",
-      "statement": "The Monday repository-health workflow runs `check_integration_repos.py --write` with GitHub write and pull-request permissions, writes its Markdown evidence to the job summary, and only starts PR handling when the scan leaves a working-tree change.",
+      "id": "claim_46bea76c8b7f4e4ebe2656878f5cbfa1",
+      "statement": "The provider overview excludes configured core packages, includes packages at 100,000 downloads unless highlighted, places highlighted packages first, limits the result to 50 rows, and rejects the unsupported combination of `has_reference_docs: true` with `integration: false`.",
       "evidence": [
         {
-          "resource": "repo://.github/workflows/check-integration-repos.yml#L52-L144",
-          "version": "repo-lines-v1:sha256:ef127e8b5fe60ce844319b5168716ce7a38b5466119baebc6ded625ae47c0fc2:eyJzZWxlY3RlZExpbmVDb3VudCI6OTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmOWJhYzAxOGNmNjY0OWU4YWVjNGM0NmI0MzIwNDVkZmMyNGZkNzg2ODQ3Yjk5NWJmOTI0ODY0MDE4OWZiZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmOTE5OTFjNDZhNjE4YzUzZjRlNmY3MTYzYjQ4ZDUyZTljMWMwZjgxMDNmMGJkY2YzNTM0ZmU5ZGEwMzc5ZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgxYTdkOGM5MmYyNzBlN2Q3ZmUzZTY4NWZkM2Y5MGE2NWEyM2IzNWNlZjE4ZWU0MzY3OTVjYmJjNzI4ODBlNTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+          "resource": "repo://pipeline/tools/partner_pkg_table.py#L21-L36",
+          "version": "repo-lines-v1:sha256:28c5dc5427bc94d7b7bff6cf635b33c9c3ad279e972838f881d152b6f6004c02:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA1NmVhMGFkNzM3MTViMGYzMDE5MWQwMWMyYjk0ZmVlZDI2NGFjM2VjMzk5MGI0ODc1NDUxNjk3NGU5ZmZlM2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ2MjIxOWU2MzE5ZmQyY2YyZjgzOTM4NDcxZTM1N2Q5ZjYyYmUzOWY1MjI5MjZiOTA2NGYyMjQ4M2U1MDE2NjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRiZDJlNjBkMDFiYzYwMDM1OTQ1ZjBkZDIxOWQ4OTYwMDBkZDQ5ZWI5ZDRjNGY0YTEyNDdjNDRjNWJkNGY3MWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkxODE2MTBkYjZlN2QwYTZiOWM4MDIwNzE4ZjVmNTVkMzFhYjAzOTNjNmNiODZjYjQ0NDg1MjViMmE4NDQ2MzIifQ"
         },
         {
-          "resource": "repo://.github/workflows/check-integration-repos.yml#L8-L50",
-          "version": "repo-lines-v1:sha256:a1b129fc7af75a8c1e9b6bf36a0fec69d40de4032aa06b3285e302819f0a1911:eyJzZWxlY3RlZExpbmVDb3VudCI6NTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM4Y2E5MDAyZTliZWMzMTNjMjI5Y2Y3NTMzMTU4NjhjNjc0ZmQ3OWMxZDAwYzZjNTZmZDhlNzQ2ZmMyOGRjYzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2NjY1ZmNjZTYzMWU2MDM2MjBhNTM2MGU4OGUwNDBjY2ZiMjBiNmJlYjBkNjhkMjhiYzk0YzFiNmEwYmFiNjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk2MzFkNjI5M2EyOWY1OTY1ZmEyZmJiYTY4MmNjZDc2MmYyMmFhMDY2ZWFlMjBlOGY1OWRjY2UxNDQ2MzliMWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjliYWYwNDQ5NTRjZTUyYzZiM2QyNjIyMGU2OWIwYmE3NWM5NjA1MDdkYjY2YzNkMWM0Y2JmZTliMTgzMTZjZmEifQ"
+          "resource": "repo://pipeline/tools/partner_pkg_table.py#L218-L278",
+          "version": "repo-lines-v1:sha256:a7fb4faac615387bc5b7d591fc7778fed455e27f77db19e7e95f35da4df268ae:eyJzZWxlY3RlZExpbmVDb3VudCI6NjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyYTE1YTEyMTUwZjNhMTY4ZjEwYmVkOWNmOGQ5NjcxZTk2M2RhOGRmZjNlNmE2MjFjYjQ0MzljZWM2NzFiYjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyYWZhZjE1MWUyNzhlN2FhOTBjYTliNjk4NjYwNThmOTI1NDEzOWZkZjc4MzgzZDliNTZkMzg1ODMzN2U5YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkN2ViZDRmYzNmYTg3ODZiYTA5ZmYxNjkzNTlhNGUzZGE4MzFhMDYwNzA3ZjUwOGRkNGEyYTJlNmM5M2UxMzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZkMzU3OGVmMmE0MGY1MjZhZmFkOGJlMzUyYTUzYzc3YTQ2NDE0MjkwMGQwYzdkMjkxOGUyYzhmNzE0NjI5ODIifQ"
         }
       ]
     },
     {
-      "id": "claim_5957b690486542c095ddd3ddbebbd963",
-      "statement": "When a third-party GitHub repository is unavailable, the checker uses PyPI project URLs and homepage, npm repository metadata, and associated external `docs_url` values as evidence; it auto-repairs only a verified different live third-party GitHub repository, while live GitLab, partner-docs, or first-party alternatives require attention and prevent delisting.",
+      "id": "claim_69cd73c9755448638a7bf5101f0e042c",
+      "statement": "Component landing pages consume generated download snippets; for example, the Python tools page imports and renders `python-tools-downloads.mdx`, so the generated table is a public documentation dependency.",
       "evidence": [
         {
-          "resource": "repo://scripts/check_integration_repos.py#L387-L477",
-          "version": "repo-lines-v1:sha256:65b35b6fd7ce420bf6151dcde0d8fa7a95ee81051731fb9d7bc6b059b600944c:eyJzZWxlY3RlZExpbmVDb3VudCI6OTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwNjAyNzA5M2U4ZWU4OTJlMjUxZmVmNDM4MDJjMDI0NTM3NjUyMjRiNzAzMTkxNTVhZmU0Y2Y4NDVlYjMxYjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2NjU1MDMxODdjNzdlNDgzMzU4M2Y4MDc3YjYwYzU1OGZjMzE2MDc3ODViZjljMWY0MjhhYmUwMWVhNjIwMWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3MDE0OWUwNjlhZDY3ZWNjZjQ3MzY0NmZmMWM3NTAwNTBkMzI5ZDExMDAxOGRjNTc2Njg3OGVhZmExZDYwN2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZlZDg1OTRiYzY2YWQ2NmNiOWY1OGI5OTcxMmE0ZDViZDgzZGZmYmQ4MzJhNGQzYTkxODI4ZGViYTc0MmIwMzQifQ"
+          "resource": "repo://src/oss/python/integrations/tools/index.mdx#L1-L14",
+          "version": "repo-lines-v1:sha256:afa3ed3dd0e8301aeddc315d075db6a122f049a40ec5ccd7547e1d6c47f2b876:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1MmQ3MTExMDNkNTBhNDM3ODMwYzZmYmNkMDRmYjRiYWI0OWEwZjgyZjZkMjZkMWM3OTFjNmU4NDg4ZGQwOTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiN2UzMzg3OTA0M2M0YWRhY2ZjZDMxODc1NWNkNWM1NTljMjYzNjJiZjFlMDBhOTYzOTUwMGVjNWYxYmIwZTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEyMGIyMTNhMDQ5NzdlNTg5YjI4OTczOWNkZDM0MjVlNDc5YjUwYTJiOWFmOTcwODE5MGM2ZTE1OTJhZmQ5MmQifQ"
         },
         {
-          "resource": "repo://scripts/check_integration_repos.py#L582-L679",
-          "version": "repo-lines-v1:sha256:24118347035c8cf8e02676bbb1a17d1e8052b2116768756c9bd3011537584db6:eyJzZWxlY3RlZExpbmVDb3VudCI6OTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5NjJkNWQ3MTc0ZGNkMzNiMWVjNjgxMGNkYWY0ZmQwYjRlMzZjYmZiMTEyY2U2ZTM3YzVlNDg3OWUyMzEyNWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzFmMTg4ZjE0MmVkN2E4MjQ2ODBiMjA3MTcyYzU1MTliYzYxNGE0OGZkYTdjZjE2N2VkYjhkZGY3OTk1NmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdjZDYwMTdmYWIyMzRjOWJlNTI1YTVjM2Y5YzU5MDA0ZjFmYTY2MWE5OGNiNjdkMTY1NzA5ZDEzMTI0ZWU4MDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJhZWNiNTJiNmQyZDA4Y2VmNGM3NjIzMDk4OTQzMzk3NDljMzkxNTY5ZjViZjM5MjgxOThkY2E3M2UxMmMxNTQifQ"
+          "resource": "repo://src/oss/python/integrations/tools/index.mdx#L185-L195",
+          "version": "repo-lines-v1:sha256:ab48a4b696860e95a5cd16d13f014433b5262adb3f0076bebd3440f72172b44a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxOTJkMzc3OGVhNjkwMDJlMjQzNjY1MjMyMGYwOWNhYzRlYTM3Y2YyODQ4YzdiYjU0MzZkMjVmMGMxYTAzOWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQwNzViZDJjYmZkNDJkYzEzODA1NGY3ZjY5NDBjZmU4MDk5NTA4MzU0NjYxYTE3MDZhMzVmMTgwNGZlOGJmNTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjYzYTg2MjQ3NGM4YmRkYzkzMWNhOWY1MjA1ZWVhNDE4YWRmODc4YjBjYWJhYWQxN2NkOTY1NWNmYzI0NWZkNjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
     },
     {
-      "id": "claim_4dfdf0699c66434ca29081e3abcfac38",
-      "statement": "The health scan treats only HTTP 301 and 308 external documentation redirects as URL repairs, ignores temporary redirects and registry destinations, and propagates accepted replacements to external listing metadata, Python provider cards, and download snippets.",
+      "id": "claim_a1a75e1762ed4add9e2dbb3ba14b062c",
+      "statement": "Focused refresh-script tests verify safe and unsafe documentation URL handling, an internal-link fallback for unsafe URLs, repository YAML validation, and Markdown cell normalization.",
       "evidence": [
         {
-          "resource": "repo://scripts/check_integration_repos.py#L1031-L1081",
-          "version": "repo-lines-v1:sha256:c63879a6670fc3f4e1cca07ac2e62d61850a4d0d54d8228131d10748c2d89f43:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVmNjY1MDdiY2ZjOTg4YzViOWJiYzM5NjQ4MzQ5MGY3NGI1MGViY2E0MDliNTgyZjMzODJiNTUyMjE2ZTc1YTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4YmE3ZDJkOWYyMWI2ODhiNTExZjZkNDNmYmNmMmJjZWM5OTE4YTBiMzJmZWZiYjM1NjcxNzY5MzhhNDM0YmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgwZjBjNzAxMWY4NWYyNTdkMzZmZTUwMTllZDMxNThhZmI5MTFhNjQxNDI1YzdiOWExYWZjMGQzZjdmYWM1YzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEyMzg2YmY5YjFlZGZmYjBjMzY0NjEyM2I3ODhhYjNmOTMxZGEwMWU4Yjg1YjBkNTU2OThmNDVlMWExODRmNzQifQ"
+          "resource": "repo://tests/unit_tests/test_refresh_integration_downloads.py#L111-L127",
+          "version": "repo-lines-v1:sha256:62329c7264bd008c1c8cc2ea7f8a0b1971fdb031a8594bc9680ccf9343c3ea9d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFmMzQ1ODNhNTk4NzY3YmY1NmFlZmViNjVlMjAzM2ExNjUxY2M0YzhkN2U2ZjBhZjNlNWNmZDMyOTNmOTMzYjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwMjViZDcyOTVjN2NlMWZjOTJjNmVhOTRiMTFjOTY5MTUyNGQyNGNlMGM1Mjk4ODVlZjMxMWVmMGI4ZWYwODAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2YTg0YTJjZDc2NGEyNjQ5MDc3MzhkMzM5NmY4Y2NjNWMzZDI1MTRlYmI1NTQzMjhjZmEzNmQ2MGVhYjc5NTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         },
         {
-          "resource": "repo://scripts/check_integration_repos.py#L190-L306",
-          "version": "repo-lines-v1:sha256:62d156e91006461f47a7b1b7382b92933eef9729726d80dc4b0ba7d818feea97:eyJzZWxlY3RlZExpbmVDb3VudCI6MTE3LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI1MjBlOTllMTNhYmViNThlYWNjZTI2OThkMjZmODA5MTg1MTRmNjdlNmIyOTlkZjc1NDlmOWZjMGFiMzBmMjkxIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIzNDdjYWY2YTg0ZGZjOTJiY2Q0ZDFhYmQwZGFhYjZjZWVmNDFmOTBmNDFlOTUzNTliNDExNTQ2YWZkMWFhNDJhIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI3MDc5MTYzYzkyZjQ2ZTQ0ODA0MmYxY2MxNWYzMDNmODgxYjNmMWE1MmFhMjZhNjk0NjI4YTI5NzBmYzQzNDM3IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiJjNWQ4YmE0N2E2Yzg1OTZlZDM1MGJhY2Q1NGY0YTI0NjdhNjM5NWQwNWRiZDdmMWRjMmZiZmNmNzY4OWEwOTFjIn0"
-        }
-      ]
-    },
-    {
-      "id": "claim_df9103c68b5e43cfbbe610a1098d3f26",
-      "statement": "A full delist removes the package record, matching external YAML rows, matching download-table rows, and a Python provider card only when no remaining package shares its normalized provider key; all mutations are dry-run unless `--write` is supplied.",
-      "evidence": [
-        {
-          "resource": "repo://scripts/check_integration_repos.py#L1016-L1115",
-          "version": "repo-lines-v1:sha256:3147b1ad087cb8b42d5d1a22661885352134215403ba44b4430c301d5ee1d70a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJkNGQyMDBiNGEzOGI1MTQ4MzY2NGZjOWMxZjk4ZWMzOWZiOTUyMzEwNjEzZTk4YjY2MzVlZDMzYjYxNGE0NjZjIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1YjkyNTAwMWY0OTgxNThkYTFiODNlZjJjZjJiOGQwNzZkMjM1ZGZkNmY2M2ZhNzQ1YjAzZjIxMzQ3NzIxOTA3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJkOWFjMjJjYWJhY2U0OTYzMDljOGM4ZWY1ZjVkYzExYjFhNmFlNzJiOGM5NWZhMzQwMjA0ZGY3Mzg5YTUwMmZkIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIxNDNjYzY0OTFhZGFkMGFlYjg2NjkwZjQ1MGJhMzNmOGVlYzUxOTFlYjE2Mzc4OGNlN2IxMjUwMjIxOGNiZjRjIn0"
-        },
-        {
-          "resource": "repo://scripts/check_integration_repos.py#L1118-L1173",
-          "version": "repo-lines-v1:sha256:03a35fbee0dcd64b2b9a302d2ca00db8f416abc0f8bdfb67bd62cf3e7a2e2d62:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYyMjcxNmRjYTRkNjM4MGUzY2VjYWZhOTg0NjBhZDJkODNkNWNiNWNjZDhkYTIwNWQ3ZjczMTlkZWZjOWFmMDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2MjMzYjNmZmVhMzJhMjNkZjUzMDY1MzQzNDhmMmRlZTc3NmE1YTZmNzRmYjUzMzE3NWRkYzUzOWE4ZmU0NjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5NjU4ZmNiYjkyYmU5YTZjMGYyMWJiY2IyMTRkYjBiOWZkMGRjMzRjZTkwYzhiODM3MTk4NDdlOGYzMWZlNDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQwOTk4NTE0OTNkZjZiMzJmZGI5ZjA3Mzc4NmU0OWJmMWUzMzVlYzA4ZTliN2U1NTY3MzQxMGZkZDc0ZTYwNzUifQ"
-        },
-        {
-          "resource": "repo://scripts/check_integration_repos.py#L722-L840",
-          "version": "repo-lines-v1:sha256:9d7804bf78f7b89191c79332bf62d1c8ff48269d53d947e9478b7405b22dffa3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTE5LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIxZTk0MWZmMTZlMGVjYjQ0YzVlYWEyMmJiMGY2NTI1NWZlMDkyNmZkNmYyMjkzYzM1NjQzYjZiNTkzMzhiYjY1IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJmN2VjZjIwNDc3YmNjMzkxN2RiMmI0OTQzZTMzOThiNjM1ODZiNjk3NTNhM2E2OGIzZWQ0ZjMyMWI3ZTk2OWIyIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiNjYxM2FmNjMwNzQyM2JlZWYwYmNkYzMzZWMyZGM4YTZjNjY4NzZmMzQ5OTdlZmQ1ZWY0ZDM1ZWY3NGI5MTg3IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlNDRkMmVmMDU4NjIxMmNmYzJiZmI5MjM3NTQzYWE5MTA1Y2Q4MzU1OGIxMzkwOTkzOTc0N2M4MDM5NDQwYTYwIn0"
-        }
-      ]
-    },
-    {
-      "id": "claim_03e26abb63014bc7876299b833c74a2e",
-      "statement": "Repository-health changes are committed only to the standing `chore/dead-integration-repos` branch and opened or updated as a draft PR with the evidence body; later scans append to the same open draft, so repair and delisting changes remain reviewed rather than auto-merged.",
-      "evidence": [
-        {
-          "resource": "repo://.github/workflows/check-integration-repos.yml#L52-L144",
-          "version": "repo-lines-v1:sha256:ef127e8b5fe60ce844319b5168716ce7a38b5466119baebc6ded625ae47c0fc2:eyJzZWxlY3RlZExpbmVDb3VudCI6OTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFmOWJhYzAxOGNmNjY0OWU4YWVjNGM0NmI0MzIwNDVkZmMyNGZkNzg2ODQ3Yjk5NWJmOTI0ODY0MDE4OWZiZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmOTE5OTFjNDZhNjE4YzUzZjRlNmY3MTYzYjQ4ZDUyZTljMWMwZjgxMDNmMGJkY2YzNTM0ZmU5ZGEwMzc5ZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgxYTdkOGM5MmYyNzBlN2Q3ZmUzZTY4NWZkM2Y5MGE2NWEyM2IzNWNlZjE4ZWU0MzY3OTVjYmJjNzI4ODBlNTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
-        }
-      ]
-    },
-    {
-      "id": "claim_fecfb05b7c214438afb4c5fb957e664e",
-      "statement": "The issue form labels a published-package submission for maintainer review, requires core listing metadata, and tells contributors that a maintainer applies `integration-run`.",
-      "evidence": [
-        {
-          "resource": "repo://.github/ISSUE_TEMPLATE/06-integration-submission.yml#L1-L132",
-          "version": "repo-lines-v1:sha256:c56ca1d85c3157aa3274dfe72b48d8e6564749b6c6bd20a71942d3f5274d9173:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMyLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI2NzVkZTU3NWI4MjJmYTZhMzBlZGY0NDJlZDM4YjI5YjJlZTkzMDU1ZTM4ZjAzZjMyOTZlOWViYzA2YTMzNDRjIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJiNTcxODRkNmE0YmVmMGNmNDI3YTQxNDc1MjE3MzdhMTZkYTNhNjNiNGQ2MGI0NzMyYTkxZDQ3NTY4NjgwYWUyIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
-        }
-      ]
-    },
-    {
-      "id": "claim_a76da68b17fa425e951b99ce7ca5b0a1",
-      "statement": "The integration submission workflow mints the App token only after the agent completes, so the agent does not receive the token used to push the branch and open the pull request.",
-      "evidence": [
-        {
-          "resource": "repo://.github/workflows/integration-submission.yml#L205-L223",
-          "version": "repo-lines-v1:sha256:a8058d2380c7d7354a23bf3f47bc64053c230067e0a53815ad012a09c634e41a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRkYzdkYjRlMjgxOWY0MzI4M2RlZjk4OWRkZTIyMjUyZGY3OWRiNDI2MDA4YWFmZWM0MmIzZWFjZWVlYzcyYmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2ZjllMWE5ODc3NDk3ODIzZWQxNDJiNTI2NDM1MzY3MDAxZjcxMTc3ZGU1MjhhZGUzNzMyZGFjYzk3YTBmYTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRmNjExNjc5ZWQ4ZjIyNDI1YWQ1MWVjOWZlZjc5OTk0MWRiNzcwNDIyZjlkZmRmZjNmYzgwNWU2NGU3NzE2MmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYzNDdmNTg5YWI5YmRjMDJjZjQ1ODNiNTA0ZDlhMmUyMWI1NGRkYzQ4YWNmMjM2ZTFkMmI0YWI2ZGRlNDQ5ZGUifQ"
-        },
-        {
-          "resource": "repo://.github/workflows/integration-submission.yml#L283-L301",
-          "version": "repo-lines-v1:sha256:9575d50f65740f510c1e5e0e8760b7f7122cc58166d4d26d21c346ef9d048120:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE4NWVkNzNjNzZiMzM3MjI4MjAxYmM1ZWU3NDJhMGQxMTYwOGZjMzljZmQ1NmFkZDQ1ZTg3NzhhMDgyYzczOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc2ZjY4OTBkN2QwY2E4M2M5ZGNhYjViYjhjMGE2MzUyNTAxZGZhODU0OTU5ZjM4YjViZGI4ZWVjNDhjNmEyMDUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk1ZmJmZGEwNmVkZTA2M2UxNWNhMmJkMmY3N2VhMDNiMWE0YWY2YWI3MmU0NDBmOTNiZWExODE4OTU4ZTA1ODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMwYWM3ZmQyMjdiODdjZmMwMzZiZjg5OGJlYTgyZTU5MDU4NzMyMWRjNzRlZjkwNWYwMDM4M2FhMGNjZTYwZDMifQ"
+          "resource": "repo://tests/unit_tests/test_refresh_integration_downloads.py#L19-L108",
+          "version": "repo-lines-v1:sha256:66284a3c949c9030d8717c501c8d3d3fd5f73b00304e705b19f83d8260b11177:eyJzZWxlY3RlZExpbmVDb3VudCI6OTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFmMzQ1ODNhNTk4NzY3YmY1NmFlZmViNjVlMjAzM2ExNjUxY2M0YzhkN2U2ZjBhZjNlNWNmZDMyOTNmOTMzYjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlZTE1NzhjOGI0ZTQ4ZWEzNGRlMWVmYzc5N2RmMzliOWE3ZmMyZWE2YzM5ZGZkYjJkOGU2YWE3NDJjZmUxNDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5OGIwNjNkOWI0N2U2NTM3OTYyNTU3MmNjZTE5NzY2OWQ1NzY3ZTEyYzE4YmUwNzU2NTJiOGNkOTgxY2U4ZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2ODBiMGYyOTI4YWMwZGJmM2RkNGEzMWQ1YzE2ZTkxOThhMjlhNjA4NmQzOWNmYjU3YzIwZjYwYmUzM2E2NWQifQ"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.4.3",
-    "at": "2026-10-23T08:20:30.474Z"
+    "at": "2026-10-25T08:18:35.051Z"
   }
 }
